@@ -1,3 +1,4 @@
+import { GetServerSideProps } from "next"
 import Head from "next/head"
 
 export default function Home() {
@@ -79,4 +80,28 @@ export default function Home() {
       </footer>
     </div>
   )
+}
+
+
+import Database from "@/server/database"
+
+export const getServerSideProps : GetServerSideProps = async (ctx) => {
+
+  const user = await Database.User.findOne({
+    where: {
+      id: 1
+    },
+    include: Database.Task
+  })
+ 
+  console.log(JSON.stringify(user, null, 2));
+
+
+  return {
+    props: {
+      user: user && {
+        firstName: user.firstName,
+      }
+    }
+  }
 }
