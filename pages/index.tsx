@@ -82,26 +82,22 @@ export default function Home() {
   )
 }
 
-
 import Database from "@/server/database"
 
-export const getServerSideProps : GetServerSideProps = async (ctx) => {
-
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const user = await Database.User.findOne({
     where: {
-      id: 1
+      id: 1,
     },
-    include: Database.Task
+    include: Database.Task,
   })
- 
-  console.log(JSON.stringify(user, null, 2));
-
 
   return {
     props: {
       user: user && {
         firstName: user.firstName,
-      }
-    }
+        createdAt: user.createdAt.toLocaleDateString(),
+      },
+    },
   }
 }
