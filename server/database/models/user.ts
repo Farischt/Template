@@ -6,6 +6,8 @@ interface UserAttributes {
   lastName: string
   email: string
   password: string
+  createdAt: Date
+  updatedAt: Date
 }
 interface UserCreationAttributes extends Optional<UserAttributes, "id"> {}
 
@@ -27,7 +29,7 @@ class User
    */
   static associate(models: any) {
     User.hasMany(models.Task, {
-      foreignKey: 'userId',
+      foreignKey: "userId",
     })
   }
 }
@@ -57,6 +59,14 @@ export default (sequelize: any) =>
       password: {
         type: DataTypes.STRING,
         allowNull: false,
+      },
+      createdAt: {
+        allowNull: false,
+        type: DataTypes.DATE,
+      },
+      updatedAt: {
+        allowNull: false,
+        type: DataTypes.DATE,
       },
     },
     {

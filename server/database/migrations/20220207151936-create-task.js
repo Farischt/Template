@@ -6,19 +6,19 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       title: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       userId: {
         type: Sequelize.INTEGER,
-        onDelete: 'CASCADE',
+        onDelete: "CASCADE",
         references: {
-          model: 'Users',
-          key: 'id',
-          as: 'userId',
-        }
+          model: "Users",
+          key: "id",
+          as: "userId",
+        },
       },
       createdAt: {
         allowNull: false,

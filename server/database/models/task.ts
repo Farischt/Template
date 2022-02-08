@@ -7,13 +7,13 @@ interface TaskAttributes {
 }
 interface TaskCreationAttributes extends Optional<TaskAttributes, "id"> {}
 
-
-class Task extends Model<TaskAttributes, TaskCreationAttributes>
-implements TaskAttributes {
-
-  declare id: number;
-  declare title: string;
-  declare userId: number;
+class Task
+  extends Model<TaskAttributes, TaskCreationAttributes>
+  implements TaskAttributes
+{
+  declare id: number
+  declare title: string
+  declare userId: number
 
   /**
    * Helper method for defining associations.
@@ -22,9 +22,9 @@ implements TaskAttributes {
    */
   static associate(models: any) {
     Task.belongsTo(models.User, {
-      foreignKey: 'userId',
-      onUpdate: 'CASCADE',
-      onDelete: 'CASCADE'
+      foreignKey: "userId",
+      onUpdate: "CASCADE",
+      onDelete: "CASCADE",
     })
   }
 }

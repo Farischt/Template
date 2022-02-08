@@ -7,6 +7,6 @@ export default (sequelize: any) => {
 
   return {
     User,
-    Task
+    Task,
   }
 }
