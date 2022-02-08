@@ -11,11 +11,16 @@ const sequelize = new Sequelize(
     host: config[env].host,
     dialect: config[env].dialect as Dialect,
     logging: false,
+    pool: {
+      max: 5,
+      min: 0,
+      acquire: 30000,
+      idle: 10000,
+    },
   }
 )
 
 const models = Models(sequelize)
-
 Object.keys(models).forEach((key) => {
   // @ts-ignore
   if (models[key].associate) {
@@ -24,7 +29,6 @@ Object.keys(models).forEach((key) => {
     models[key].associate(models)
   }
 })
-
 const sync = false
 
 ;(async () => {
