@@ -6,7 +6,9 @@
     "start": "next start",
     "lint": "next lint",
     "prettier:apply": "prettier --write .",
-    "prettier:check": "prettier --check ."
+    "prettier:check": "prettier --check .",
+    "check:": "yarn tsc --noEmit && yarn eslint . && yarn prettier --write .",
+    "check:next": "yarn tsc --noEmit && yarn lint && yarn prettier --write ."
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
