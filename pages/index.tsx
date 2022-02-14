@@ -84,7 +84,7 @@ export default function Home() {
 
 import Database from "@/server/database"
 
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
+export const getServerSideProps: GetServerSideProps = async () => {
   const user = await Database.User.findOne({
     where: {
       id: 1,
