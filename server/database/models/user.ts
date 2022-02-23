@@ -11,7 +11,7 @@ interface UserAttributes {
 }
 interface UserCreationAttributes extends Optional<UserAttributes, "id"> {}
 
-class User
+export class User
   extends Model<UserAttributes, UserCreationAttributes>
   implements UserAttributes
 {
@@ -34,7 +34,7 @@ class User
   }
 }
 
-export default (sequelize: any) =>
+const UserModel = (sequelize: any) =>
   User.init(
     {
       id: {
@@ -74,3 +74,5 @@ export default (sequelize: any) =>
       modelName: "User",
     }
   )
+
+export default UserModel

@@ -24,7 +24,6 @@ const models = Models(sequelize)
 Object.keys(models).forEach((key) => {
   // @ts-ignore
   if (models[key].associate) {
-    console.log("done")
     // @ts-ignore
     models[key].associate(models)
   }
@@ -39,4 +38,5 @@ const sync = false
   }
 })()
 
-export default { sequelize, ...models }
+const Database = { sequelize, ...models }
+export default Database

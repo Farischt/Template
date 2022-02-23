@@ -1,7 +1,10 @@
-import UserModel from "./user"
-import TaskModel from "./task"
+import UserModel, { User } from "./User"
+import TaskModel, { Task } from "./Task"
 
-export default (sequelize: any) => {
+export { User }
+export { Task }
+
+const Models = (sequelize: any) => {
   const User = UserModel(sequelize)
   const Task = TaskModel(sequelize)
 
@@ -10,3 +13,5 @@ export default (sequelize: any) => {
     Task,
   }
 }
+
+export default Models

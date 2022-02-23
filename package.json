@@ -1,13 +1,16 @@
 {
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "db:clean": "sequelize db:migrate:undo:all && sequelize db:seed:undo:all",
+    "db:update": "sequelize db:migrate",
+    "db:fill": "sequelize db:seed",
+    "dev": "yarn db:update && next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "yarn db:update && next start",
     "lint": "next lint",
     "prettier:apply": "prettier --write .",
     "prettier:check": "prettier --check .",
-    "check:": "yarn tsc --noEmit && yarn eslint . && yarn prettier --write .",
+    "check:eslint": "yarn tsc --noEmit && yarn eslint . && yarn prettier --write .",
     "check:next": "yarn tsc --noEmit && yarn lint && yarn prettier --write ."
   },
   "dependencies": {

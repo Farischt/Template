@@ -7,7 +7,7 @@ interface TaskAttributes {
 }
 interface TaskCreationAttributes extends Optional<TaskAttributes, "id"> {}
 
-class Task
+export class Task
   extends Model<TaskAttributes, TaskCreationAttributes>
   implements TaskAttributes
 {
@@ -28,7 +28,7 @@ class Task
     })
   }
 }
-export default (sequelize: any) =>
+const TaskModel = (sequelize: any) =>
   Task.init(
     {
       id: {
@@ -45,3 +45,5 @@ export default (sequelize: any) =>
       modelName: "Task",
     }
   )
+
+export default TaskModel
