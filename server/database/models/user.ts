@@ -6,8 +6,8 @@ interface UserAttributes {
   lastName: string
   email: string
   password: string
-  createdAt: Date
-  updatedAt: Date
+  createdAt?: Date
+  updatedAt?: Date
 }
 interface UserCreationAttributes extends Optional<UserAttributes, "id"> {}
 
@@ -20,8 +20,8 @@ export class User
   declare lastName: string
   declare email: string
   declare password: string
-  declare createdAt: Date
-  declare updatedAt: Date
+  declare createdAt?: Date
+  declare updatedAt?: Date
   /**
    * Helper method for defining associations.
    * This method is not a part of Sequelize lifecycle.

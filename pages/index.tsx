@@ -1,4 +1,3 @@
-import { GetServerSideProps } from "next"
 import Head from "next/head"
 
 export default function Home() {
@@ -82,6 +81,7 @@ export default function Home() {
   )
 }
 
+import { GetServerSideProps } from "next"
 import Database from "server/database"
 
 export const getServerSideProps: GetServerSideProps = async () => {
@@ -96,7 +96,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
     props: {
       user: user && {
         firstName: user.firstName,
-        createdAt: user.createdAt.toLocaleDateString(),
+        createdAt: user.createdAt?.toLocaleDateString() || null,
       },
     },
   }
